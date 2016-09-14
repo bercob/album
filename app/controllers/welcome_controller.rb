@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    raise 'WelcomeController::index'
     logger.info 'WelcomeController::index'
     image = MiniMagick::Image.open('app/assets/images/other-product.jpg')
     logger.info "MiniMagick::Image.open: #{image.inspect}"
