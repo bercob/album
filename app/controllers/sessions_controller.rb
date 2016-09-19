@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   before_action :require_login, only: [:destroy]
 
+  def index
+    redirect_to new_session_path
+  end
+
   def new
     @user = User.new
   end
@@ -9,14 +13,14 @@ class SessionsController < ApplicationController
     @user = User.new(user_params)
 
     unless @user.valid?
-      render new_session_path
+      render :new
       return
     end
 
     if login params[:user][:email], params[:user][:password]
       redirect_to upload_admin_index_path, notice: t('sessions.notices.login_ok')
     else
-      render new_session_path, alert: t('sessions.alerts.authenticate_failed')
+      redirect_to new_session_path, alert: t('sessions.alerts.authenticate_failed')
     end
 
   end

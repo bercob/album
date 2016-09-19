@@ -1,0 +1,10 @@
+sk:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: Email musí byť zadaný.
+            password:
+              blank: Heslo musí byť zadané.
