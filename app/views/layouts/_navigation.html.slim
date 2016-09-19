@@ -1,13 +1,12 @@
 nav.navbar
   .container
-    = render 'layouts/lang'
     .row
       .col-md-8
         .navbar-header
-          = link_to t('common.app_name'), album_admin_index_path, class: 'navbar-brand'
+          = link_to t('common.app_name'), photos_path, class: 'navbar-brand'
         .collapse.navbar-collapse
           ul.nav.navbar-nav id = 'navbar'
-            li = link_to t('navigation.menu.upload'), upload_admin_index_path
+            li = link_to t('navigation.menu.upload'), new_photo_path
             li = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
       .col-md-4.text-right
         - if current_user

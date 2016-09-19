@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def new
+    redirect_to photos_path if current_user.present?
+
     @user = User.new
   end
 
@@ -18,7 +20,7 @@ class SessionsController < ApplicationController
     end
 
     if login params[:user][:email], params[:user][:password]
-      redirect_to upload_admin_index_path, notice: t('sessions.notices.login_ok')
+      redirect_to photos_path, notice: t('sessions.notices.login_ok')
     else
       redirect_to new_session_path, alert: t('sessions.alerts.authenticate_failed')
     end
@@ -27,7 +29,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_path, notice: t('sessions.notices.logout_ok')
+    redirect_to root_path, notice: t('sessions.notices.logout_ok')
   end
 
   private

@@ -5,10 +5,4 @@ class AdminController < ApplicationController
     redirect_to login_path
   end
 
-  def upload
-  end
-
-  def album
-  end
-
 end

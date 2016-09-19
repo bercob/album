@@ -30,6 +30,8 @@ gem 'sorcery'
 
 gem 'simple_form'
 
+gem 'paperclip'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

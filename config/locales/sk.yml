@@ -20,3 +20,12 @@ sk:
     notices:
       logout_ok: Úspešne ste sa odhlásili.
       login_ok: Úspešne ste sa prihlásili.
+  photos:
+    alerts:
+      select_photos: Vyberte si obrázok.
+    notices:
+      added: Obrázky boli pridané.
+      destroyed: Obrázok bol odstránený.
+    labels:
+      upload: Nahrať
+      delete_photo: Zmazať obrázok

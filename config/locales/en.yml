@@ -20,3 +20,12 @@ en:
     notices:
       logout_ok: You have logged out successfuly.
       login_ok: You have logged in successfuly.
+  photos:
+    alerts:
+      select_photos: Select photo(s).
+    notices:
+      added: The photo(s) was added.
+      destroyed: The photo was destroyed.
+    labels:
+      upload: Upload
+      delete_photo: Delete picture

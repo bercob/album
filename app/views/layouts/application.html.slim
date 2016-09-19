@@ -6,6 +6,8 @@ html
   body
     .container
       = render 'layouts/lang'
+      - if current_user.present?
+        = render 'layouts/navigation'
       = render 'layouts/flash_messages'
 
       = yield

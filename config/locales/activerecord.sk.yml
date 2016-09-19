@@ -8,3 +8,11 @@ sk:
               blank: Email musí byť zadaný.
             password:
               blank: Heslo musí byť zadané.
+        photo:
+          attributes:
+            title:
+              blank: Názov musí byť zadaný.
+    attributes:
+      photo:
+        title: Názov
+        images: Obrázky

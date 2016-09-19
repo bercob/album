@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  root 'photos#index'
 
   resources :sessions, only: [:index, :new, :destroy, :create]
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
-  resources :welcome, only: [:index]
+  resources :photos, only: [:index, :new, :destroy, :create]
 
-  resources :admin, only: [:index] do
-    collection do
-      get :upload
-      get :album
-    end
-  end
+  resources :admin, only: [:index]
 
 end
