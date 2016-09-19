@@ -1,0 +1,11 @@
+doctype html
+
+html
+  = render 'layouts/head'
+
+  body
+    .container
+      = render 'layouts/lang'
+      = render 'layouts/flash_messages'
+
+      = yield

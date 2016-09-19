@@ -1,0 +1,22 @@
+sk:
+  common:
+    app_name: Album
+    confirms:
+      are_you_sure: Ste si istý ?
+  navigation:
+    menu:
+      upload: Nahrať
+      logout: Odhlásiť
+    labels:
+      welcome: Vítajte
+  sessions:
+    labels:
+      email: Email
+      password: Heslo
+      login: Prihlásiť
+    alerts:
+      login_first: Musíte byť prihlásený.
+      authenticate_failed: Autentifikácia zlyhala.
+    notices:
+      logout_ok: Úspešne ste sa odhlásili.
+      login_ok: Úspešne ste sa prihlásili.
