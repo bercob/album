@@ -8,5 +8,3 @@ test:
 
 production:
   <<: *default
-
-  RAILS_SERVE_STATIC_FILES: false
