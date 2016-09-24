@@ -1,0 +1,14 @@
+.media
+  .media-left
+    h4.media-heading
+      - if current_user.present? || photo_album.has_child?
+        = link_to photo_album.title, photo_album
+      - else
+        = photo_album.title
+    .media-body
+      - photo_album.photos.each do |p|
+        = link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url, target: '_blank'
+        - if current_user.present?
+          = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
+      - if current_user.present?
+        = link_to t('photo_albums.labels.delete'), photo_album_path(photo_album), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }

@@ -1,0 +1,4 @@
+- if params[:id].present?
+  h1 = @photo_album.title
+  = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}"
+= render @photo_albums

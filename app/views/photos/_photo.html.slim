@@ -1,7 +1,0 @@
-.media
-  .media-left
-    = link_to image_tag(photo.image.url(:thumb), class: 'media-object'), photo.image.url, target: '_blank'
-  - if current_user.present?
-    .media-body
-      h4.media-heading = photo.title
-      = link_to t('photos.labels.delete_photo'), photo_path(photo), class: 'btn btn-danger', method: :delete, data: {confirm: t('common.confirms.are_you_sure')}

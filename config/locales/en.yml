@@ -9,6 +9,7 @@ en:
       logout: Logout
     labels:
       welcome: Welcome
+      back: Back
   sessions:
     labels:
       email: Email
@@ -21,11 +22,16 @@ en:
       logout_ok: You have logged out successfuly.
       login_ok: You have logged in successfuly.
   photos:
-    alerts:
-      select_photos: Select photo(s).
     notices:
       added: The photo(s) was added.
       destroyed: The photo was destroyed.
     labels:
       upload: Upload
-      delete_photo: Delete picture
+      delete: Delete picture
+  photo_albums:
+      notices:
+        added: The photo album was added.
+        destroyed: The photo album was destroyed.
+      labels:
+        upload: Upload
+        delete: Delete photo album

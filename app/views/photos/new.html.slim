@@ -1,9 +1,0 @@
-.page-header
-  h1 = t('navigation.menu.upload')
-
-.row
-  .col-md-6.col-md-offset-3
-    = simple_form_for @photo, html: {multipart: true} do |f|
-      = f.input :title
-      = f.input :images, as: :file, :input_html => { :multiple => true }
-      = f.button :submit, t('photos.labels.upload')

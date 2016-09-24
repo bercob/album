@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    redirect_to photos_path if current_user.present?
+    redirect_to photo_albums_path if current_user.present?
 
     @user = User.new
   end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
 
     if login params[:user][:email], params[:user][:password]
-      redirect_to photos_path, notice: t('sessions.notices.login_ok')
+      redirect_to photo_albums_path, notice: t('sessions.notices.login_ok')
     else
       redirect_to new_session_path, alert: t('sessions.alerts.authenticate_failed')
     end

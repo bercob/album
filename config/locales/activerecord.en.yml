@@ -8,11 +8,12 @@ en:
               blank: Email has to be set.
             password:
               blank: Password has to be set.
-        photo:
+        photo_album:
           attributes:
             title:
               blank: Title has to be set.
     attributes:
-      photo:
+      photo_album:
         title: Title
+      photo:
         images: Images

@@ -11,17 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919143805) do
+ActiveRecord::Schema.define(version: 20160922181352) do
+
+  create_table "photo_albums", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photo_albums", ["parent_id"], name: "index_photo_albums_on_parent_id"
 
   create_table "photos", force: :cascade do |t|
-    t.string   "title"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "photo_album_id"
   end
+
+  add_index "photos", ["photo_album_id"], name: "index_photos_on_photo_album_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            null: false
