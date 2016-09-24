@@ -16,9 +16,11 @@ class PhotosController < ApplicationController
   before_action :require_login
 
   def destroy
-    Photo.find(params[:id]).destroy
+    photo = Photo.find(params[:id])
+    parent_id = photo.photo_album.parent_id
+    photo.destroy
     flash[:success] = t('photos.notices.destroyed')
-    redirect_to photo_albums_path
+    redirect_to "#{photo_albums_path}/#{parent_id}"
   end
 
 end

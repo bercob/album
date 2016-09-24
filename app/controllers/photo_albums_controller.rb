@@ -1,6 +1,6 @@
 class PhotoAlbumsController < ApplicationController
   before_action :require_login, except: [:index, :show]
-  before_action :set_photo_album, only: [:show, :destroy]
+  before_action :set_photo_album, only: [:show, :destroy, :edit, :update]
 
   def index
     @photo_albums = PhotoAlbum.children(nil).order('created_at')
@@ -24,6 +24,25 @@ class PhotoAlbumsController < ApplicationController
       redirect_to redirect_path @photo_album
     else
       render 'new'
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if photos_params.present?
+      photos_params[:images].each do |image|
+        @photo_album.photos.new(image: image)
+      end
+    end
+
+    if @photo_album.update photo_album_params
+      flash[:success] = t('photos.notices.added')
+      redirect_to redirect_path @photo_album
+    else
+      render :edit
     end
   end
 

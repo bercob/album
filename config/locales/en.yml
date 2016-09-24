@@ -6,6 +6,7 @@ en:
   navigation:
     menu:
       upload: Upload
+      edit: Edit
       logout: Logout
     labels:
       welcome: Welcome
@@ -35,3 +36,4 @@ en:
       labels:
         upload: Upload
         delete: Delete photo album
+        edit: Edit album

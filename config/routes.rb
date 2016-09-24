@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:destroy]
 
-  resources :photo_albums, only: [:index, :new, :destroy, :create, :show]
+  resources :photo_albums, only: [:index, :new, :destroy, :create, :show, :edit, :update]
 
   resources :admin, only: [:index]
 

@@ -11,4 +11,7 @@
         - if current_user.present?
           = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
       - if current_user.present?
-        = link_to t('photo_albums.labels.delete'), photo_album_path(photo_album), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
+        br
+        br
+        = link_to t('photo_albums.labels.edit'), edit_photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-danger'
+        = link_to t('photo_albums.labels.delete'), photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }

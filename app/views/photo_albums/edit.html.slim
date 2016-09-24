@@ -1,5 +1,5 @@
 .page-header
-  h1 = t('navigation.menu.upload')
+  h1 = t('navigation.menu.edit')
 
 .row
   .col-md-6.col-md-offset-3
@@ -8,4 +8,4 @@
       = pa.hidden_field :parent_id, value: params[:parent_id]
       = simple_form_for :photos, html: {multipart: true} do |p|
         = p.input :images, as: :file, :input_html => { :multiple => true }
-        = p.button :submit, t('photo_albums.labels.upload')
+        = p.button :submit, t('photo_albums.labels.edit')
