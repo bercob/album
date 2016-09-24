@@ -1,5 +1,6 @@
 .page-header
-  h1 = t('navigation.menu.upload')
+  h2 = t('navigation.menu.upload')
+  = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{params['parent_id']}"
 
 .row
   .col-md-6.col-md-offset-3
