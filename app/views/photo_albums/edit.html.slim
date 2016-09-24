@@ -1,5 +1,6 @@
 .page-header
   h2 = t('navigation.menu.edit')
+  = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}"
 
 .row
   .col-md-6.col-md-offset-3
