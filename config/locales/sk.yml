@@ -8,6 +8,7 @@ sk:
       upload: Nahrať
       edit: Editovať
       logout: Odhlásiť
+      home: Home
     labels:
       welcome: Vítajte
       back: Späť
@@ -33,7 +34,8 @@ sk:
       notices:
         added: Album bol pridaný.
         destroyed: Album bol odstránený.
+        updated: Album bol upravený.
       labels:
-        upload: Nahrať album
+        save: Uložiť album
         delete: Zmazať album
         edit: Editovať album

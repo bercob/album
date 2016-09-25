@@ -8,6 +8,7 @@ en:
       upload: Upload
       edit: Edit
       logout: Logout
+      home: Home
     labels:
       welcome: Welcome
       back: Back
@@ -33,7 +34,8 @@ en:
       notices:
         added: The photo album was added.
         destroyed: The photo album was destroyed.
+        updated: The photo album was updated.
       labels:
-        upload: Upload
+        save: Save photo album
         delete: Delete photo album
-        edit: Edit album
+        edit: Edit photo album

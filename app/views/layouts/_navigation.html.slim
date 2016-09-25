@@ -3,7 +3,7 @@ nav.navbar
     .row
       .col-md-8
         .navbar-header
-          = link_to t('common.app_name'), photo_albums_path, class: 'navbar-brand'
+          = link_to t('navigation.menu.home'), photo_albums_path, class: 'navbar-brand'
         .collapse.navbar-collapse
           ul.nav.navbar-nav id = 'navbar'
             li = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path

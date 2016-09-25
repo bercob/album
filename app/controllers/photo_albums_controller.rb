@@ -20,7 +20,7 @@ class PhotoAlbumsController < ApplicationController
     end
 
     if @photo_album.save
-      flash[:success] = t('photos.notices.added')
+      flash[:success] = t('photo_albums.notices.added')
       redirect_to redirect_path @photo_album
     else
       render 'new'
@@ -39,7 +39,7 @@ class PhotoAlbumsController < ApplicationController
     end
 
     if @photo_album.update photo_album_params
-      flash[:success] = t('photos.notices.added')
+      flash[:success] = t('photo_albums.notices.updated')
       redirect_to redirect_path @photo_album
     else
       render :edit
