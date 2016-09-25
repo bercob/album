@@ -8,11 +8,12 @@
     .media-body
       - photo_album.photos.each do |p|
         .row
-          .col-md-1
+          .col-md-2
             = link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url, target: '_blank'
-          .col-md-11
+          .col-md-10
             - if current_user.present?
               = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
+        br
       - if current_user.present?
         br
         br
