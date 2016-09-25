@@ -34,6 +34,8 @@ gem 'paperclip'
 
 gem 'aws-sdk'
 
+gem 'lightbox-bootstrap-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
