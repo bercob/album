@@ -3,7 +3,7 @@ class PhotoAlbumsController < ApplicationController
   before_action :set_photo_album, only: [:show, :destroy, :edit, :update]
 
   def index
-    @photo_albums = PhotoAlbum.children(nil).order('created_at')
+    @photo_albums = PhotoAlbum.children(nil).order('created_at desc')
   end
 
   def new
@@ -53,7 +53,7 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def show
-    @photo_albums = PhotoAlbum.children(@photo_album.id).order('created_at')
+    @photo_albums = PhotoAlbum.children(@photo_album.id).order('created_at desc')
     render :index
   end
 
