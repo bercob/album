@@ -28,9 +28,10 @@
                       = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
   - if current_user.present?
     br
-    br
     = link_to t('photo_albums.labels.edit'), edit_photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-success'
     =< link_to t('photo_albums.labels.delete'), photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
+    br
+    br
 
 javascript:
   $(document).ready(function () {
