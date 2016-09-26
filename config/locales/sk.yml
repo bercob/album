@@ -10,7 +10,7 @@ sk:
       logout: Odhlásiť
       home: Home
     labels:
-      welcome: Vítajte
+      logged: Prihlásený
       back: Späť
   sessions:
     labels:

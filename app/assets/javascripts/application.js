@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require lightbox-bootstrap
+//= require owl.carousel
 //= require_tree .

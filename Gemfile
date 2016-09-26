@@ -36,6 +36,8 @@ gem 'aws-sdk'
 
 gem 'lightbox-bootstrap-rails'
 
+gem 'owlcarousel-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

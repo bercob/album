@@ -1,7 +1,9 @@
 - if params[:id].present?
-  .row
-    .col-md-8
-      h2 = @photo_album.title
-    .clo-md-4.text-right
-      = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}", class: 'btn btn-info'
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-md-8
+          h4 = @photo_album.title
+        .col-md-4.text-right
+          = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}", class: 'btn btn-info'
 = render @photo_albums

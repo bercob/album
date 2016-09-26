@@ -10,7 +10,7 @@ en:
       logout: Logout
       home: Home
     labels:
-      welcome: Welcome
+      logged: Logged
       back: Back
   sessions:
     labels:

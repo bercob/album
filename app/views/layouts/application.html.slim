@@ -6,10 +6,7 @@ html
   body
     .container-fluid
       = render 'layouts/lang'
-      - if current_user.present?
-        = render 'layouts/navigation'
-      - else
-        h1 = t('common.app_name')
-        = render 'layouts/flash_messages'
+      = render 'layouts/navigation'
+      = render 'layouts/flash_messages'
 
       = yield

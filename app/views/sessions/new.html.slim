@@ -3,4 +3,4 @@
     = simple_form_for @user, url: sessions_path, html: { autocomplete: 'off' } do |f|
       = f.input :email, label: t('sessions.labels.email')
       = f.input :password, input_html: { autocomplete: 'off' }, label: t('sessions.labels.password')
-      = f.button :submit, t('sessions.labels.login')
+      = f.button :submit, t('sessions.labels.login'), class: 'btn btn-success'
