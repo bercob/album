@@ -6,22 +6,23 @@
           = link_to photo_album.title, photo_album
         - else
           = photo_album.title
-    .panel-body
-      - if current_user.present?
-        - photo_album.photos.each do |p|
-          .row
-            .col-md-2
-              = link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
-            .col-md-10
-              = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
-      - else
-        .row-fluid
-          .span12
-            .owl-carousel.owl-theme id='owl-carousel'
-              .owl-wrapper-outer.owl-wrapper
-              - photo_album.photos.each do |p|
-                .owl-item.item
-                  = link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
+    - if photo_album.photos.any?
+      .panel-body
+        - if current_user.present?
+          - photo_album.photos.each do |p|
+            .row
+              .col-md-2
+                = link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
+              .col-md-10
+                = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete, data: { confirm: t('common.confirms.are_you_sure') }
+        - else
+          .row-fluid
+            .span12
+              .owl-carousel.owl-theme id='owl-carousel'
+                .owl-wrapper-outer.owl-wrapper
+                - photo_album.photos.each do |p|
+                  .owl-item.item
+                    = link_to image_tag(p.image.url(:thumb), class: 'media-object'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
   - if current_user.present?
     br
     br
