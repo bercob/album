@@ -1,6 +1,6 @@
 sk:
   common:
-    app_name: Album
+    app_name: Rodinný album
     confirms:
       are_you_sure: Ste si istý ?
   navigation:

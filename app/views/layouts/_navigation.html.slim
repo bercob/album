@@ -3,10 +3,8 @@ nav.navbar.navbar-default
     .pull-left
       .navbar-header
         .navbar-brand
-          = t('common.app_name')
+          = link_to t('common.app_name'), root_path
       ul.nav.navbar-nav id = 'navbar'
-        li class = (request.path == photo_albums_path ? 'active' : '')
-          = link_to t('navigation.menu.home'), photo_albums_path
         - if current_user.present?
           li class = (request.path == new_photo_album_path ? 'active' : '')
             = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
