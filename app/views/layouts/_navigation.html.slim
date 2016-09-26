@@ -1,15 +1,15 @@
 nav.navbar.navbar-default
   .container-fluid
-    .row
-      .col-md-9
-        .navbar-header
-          .navbar-brand
-            = t('common.app_name')
-        ul.nav.navbar-nav id = 'navbar'
-          li = link_to t('navigation.menu.home'), photo_albums_path
-          - if current_user.present?
-            li = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
-            li = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
-      .col-md-3.text-right.text-nowrap
+    .pull-left
+      .navbar-header
+        .navbar-brand
+          = t('common.app_name')
+      ul.nav.navbar-nav id = 'navbar'
+        li = link_to t('navigation.menu.home'), photo_albums_path
         - if current_user.present?
-          = "#{t('navigation.labels.logged')}: #{current_user.email}"
+          li = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
+          li = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
+    .pull-right
+      - if current_user.present?
+        = "#{t('navigation.labels.logged')}: #{current_user.email}"
+    .clearfix

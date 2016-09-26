@@ -1,8 +1,8 @@
 .page-header
-  .row
-    .col-md-8
-      h2 = t('navigation.menu.edit')
-    .col-md-4.text-right
-      = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}", class: 'btn btn-info'
+  .pull-left
+    h2 = t('navigation.menu.edit')
+  .pull-right
+    = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}", class: 'btn btn-info'
+  .clearfix
 
 = render 'form'
