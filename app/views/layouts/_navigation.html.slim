@@ -5,10 +5,13 @@ nav.navbar.navbar-default
         .navbar-brand
           = t('common.app_name')
       ul.nav.navbar-nav id = 'navbar'
-        li = link_to t('navigation.menu.home'), photo_albums_path
+        li class = (request.path == photo_albums_path ? 'active' : '')
+          = link_to t('navigation.menu.home'), photo_albums_path
         - if current_user.present?
-          li = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
-          li = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
+          li class = (request.path == new_photo_album_path ? 'active' : '')
+            = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
+          li
+            = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
     - if current_user.present?
       .pull-right
         = "#{t('navigation.labels.logged')}: #{current_user.email}"

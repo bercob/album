@@ -78,5 +78,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Show exceptions but disable caching
-  config.consider_all_requests_local = true
+  # config.consider_all_requests_local = true
 end
