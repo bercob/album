@@ -2,7 +2,7 @@
   .pull-left
     h2 = t('navigation.menu.edit')
   .pull-right
-    = link_to t('navigation.labels.back'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}", class: 'btn btn-info'
+    = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}"
   .clearfix
 
 = render 'form'
