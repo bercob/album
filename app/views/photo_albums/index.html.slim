@@ -7,8 +7,8 @@
         .pull-right
           = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}"
         .clearfix
+  .row-panel-body
     - if @photo_albums.any?
-      .panel-body
-        = render @photo_albums
+      = render @photo_albums
 - else
   = render @photo_albums

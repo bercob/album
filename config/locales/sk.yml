@@ -8,6 +8,7 @@ sk:
       upload: Nahrať
       edit: Editovať
       logout: Odhlásiť
+      login: Prihlásiť
       home: Home
     labels:
       logged: Prihlásený

@@ -1,8 +1,6 @@
-.row
-  .col-md-6.col-md-offset-3
-    = simple_form_for @photo_album, html: {multipart: true} do |pa|
-      = pa.input :title
-      = pa.hidden_field :parent_id, value: params[:parent_id]
-      = simple_form_for :photos, html: {multipart: true} do |p|
-        = p.input :images, as: :file, :input_html => { :multiple => true }
-        = p.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success'
+= simple_form_for @photo_album, html: {multipart: true} do |pa|
+  = pa.input :title
+  = pa.hidden_field :parent_id, value: params[:parent_id]
+  = simple_form_for :photos, html: {multipart: true} do |p|
+    = p.input :images, as: :file, :input_html => { :multiple => true }
+    = p.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success'
