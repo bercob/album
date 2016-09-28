@@ -5,10 +5,10 @@ sk:
       are_you_sure: Ste si istý ?
   navigation:
     menu:
-      upload: Nahrať
+      upload: Nahrať album
       edit: Editovať
-      logout: Odhlásiť
-      login: Prihlásiť
+      logout: Odhlásiť sa
+      login: Prihlásiť sa
       home: Home
     labels:
       logged: Prihlásený
@@ -17,7 +17,7 @@ sk:
     labels:
       email: Email
       password: Heslo
-      login: Prihlásiť
+      login: Prihlásenie
     alerts:
       login_first: Musíte byť prihlásený.
       authenticate_failed: Autentifikácia zlyhala.
