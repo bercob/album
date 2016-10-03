@@ -3,7 +3,7 @@ class PhotoAlbumsController < ApplicationController
   before_action :set_photo_album, only: [:show, :destroy, :edit, :update]
 
   def index
-    @photo_albums = PhotoAlbum.children(nil).order('created_at desc')
+    @photo_albums = PhotoAlbum.top_parents.order('updated_at desc')
   end
 
   def new
@@ -23,7 +23,7 @@ class PhotoAlbumsController < ApplicationController
       flash[:success] = t('photo_albums.notices.added')
       redirect_to redirect_path @photo_album
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -47,13 +47,13 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def destroy
-    destroy_children @photo_album
+    @photo_album.destroy
     flash[:success] = t('photo_albums.notices.destroyed')
     redirect_to redirect_path @photo_album
   end
 
   def show
-    @photo_albums = PhotoAlbum.children(@photo_album.id).order('created_at desc')
+    @photo_albums = @photo_album.children.order('updated_at desc')
     render :index
   end
 
@@ -76,10 +76,4 @@ class PhotoAlbumsController < ApplicationController
     "#{photo_albums_path}/#{photo_album.parent_id}"
   end
 
-  def destroy_children(photo_album_id)
-    PhotoAlbum.children(photo_album_id).each do |children|
-      destroy_children children.id
-    end
-    PhotoAlbum.find(photo_album_id).destroy
-  end
 end
