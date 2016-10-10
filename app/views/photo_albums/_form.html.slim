@@ -1,8 +1,10 @@
 = simple_form_for @photo_album, html: {multipart: true} do |pa|
   = pa.input :title
+  label.control-label
+    = t 'activerecord.attributes.photo_album.taken_at'
   .input-group.date.taken_at
     = pa.input :taken_at, as: :string,
-            input_html: { class: 'datepicker-input-box', readonly: true, value: @photo_album_presenter.datepicker_value(pa.object.taken_at) },
+            input_html: { class: 'datepicker-input-box', readonly: false, value: @photo_album_presenter.datepicker_value(pa.object.taken_at) },
             label: false
     span.input-group-addon
       i.glyphicon.glyphicon-calendar
@@ -16,7 +18,7 @@ javascript:
 
   $('.taken_at').datepicker({
     autoclose: true,
-    language: "#{Rails.application.config.i18n.locale}",
+    language: "#{I18n.locale}",
     todayHighlight: true,
     endDate: current_date,
     format: "#{t 'javascript.date_format'}"

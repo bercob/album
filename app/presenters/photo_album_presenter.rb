@@ -1,10 +1,9 @@
 class PhotoAlbumPresenter
   def datepicker_value(date)
-    date.present? ? show_date(date) : show_date(Date.today)
+    date.present? ? show_date(date) : nil
   end
 
   def show_date(date)
-    # date.try(:strftime, '%d.%m.%Y')
     I18n.l date
   end
 end

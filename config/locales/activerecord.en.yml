@@ -16,5 +16,6 @@ en:
       photo_album:
         title: Title
         photos: Photos
+        taken_at: Taken
       photo:
         images: Photos

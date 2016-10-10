@@ -16,5 +16,6 @@ sk:
       photo_album:
         title: Názov
         photos: Obrázky
+        taken_at: Vyhotovený
       photo:
         images: Obrázky

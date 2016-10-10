@@ -15,7 +15,7 @@ class PhotoAlbum < ActiveRecord::Base
   has_many :children, class_name: 'PhotoAlbum', foreign_key: :parent_id, dependent: :destroy
   belongs_to :parent, class_name: 'PhotoAlbum'
 
-  validates :title, :taken_at, presence: true
+  validates :title, presence: true
 
   scope :top_parents, -> { where(parent_id: nil) }
   scope :ordered, -> { order(taken_at: :desc, updated_at: :desc) }
