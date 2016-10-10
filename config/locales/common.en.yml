@@ -1,0 +1,45 @@
+en:
+  common:
+    app_name: Family album
+    confirms:
+      are_you_sure: Are you sure ?
+  navigation:
+    menu:
+      upload: Upload
+      edit: Edit
+      logout: Logout
+      login: Login
+      home: Home
+    labels:
+      logged: Logged
+      back: Back
+  sessions:
+    labels:
+      email: Email
+      password: Password
+      login: Login
+    alerts:
+      login_first: You have to login first.
+      authenticate_failed: Authentication has been failed.
+    notices:
+      logout_ok: You have logged out successfuly.
+      login_ok: You have logged in successfuly.
+  photos:
+    notices:
+      added: The photo(s) was added.
+      destroyed: The photo was destroyed.
+    labels:
+      upload: Upload
+      delete: Delete picture
+  photo_albums:
+      notices:
+        added: The photo album was added.
+        destroyed: The photo album was destroyed.
+        updated: The photo album was updated.
+      labels:
+        save: Save photo album
+        delete: Delete photo album
+        edit: Edit photo album
+
+  javascript:
+    date_format: yyyy-mm-dd

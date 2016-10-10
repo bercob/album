@@ -1,6 +1,23 @@
 = simple_form_for @photo_album, html: {multipart: true} do |pa|
   = pa.input :title
+  .input-group.date.taken_at
+    = pa.input :taken_at, as: :string,
+            input_html: { class: 'datepicker-input-box', readonly: true, value: @photo_album_presenter.datepicker_value(pa.object.taken_at) },
+            label: false
+    span.input-group-addon
+      i.glyphicon.glyphicon-calendar
   = pa.hidden_field :parent_id, value: params[:parent_id]
   = simple_form_for :photos, html: {multipart: true} do |p|
     = p.input :images, as: :file, :input_html => { :multiple => true }
     = p.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success'
+
+javascript:
+  var current_date = new Date();
+
+  $('.taken_at').datepicker({
+    autoclose: true,
+    language: "#{Rails.application.config.i18n.locale}",
+    todayHighlight: true,
+    endDate: current_date,
+    format: "#{t 'javascript.date_format'}"
+  });

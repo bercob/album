@@ -38,6 +38,8 @@ gem 'lightbox-bootstrap-rails'
 
 gem 'owlcarousel-rails'
 
+gem 'bootstrap-datepicker-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

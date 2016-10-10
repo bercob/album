@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require lightbox-bootstrap
 //= require owl.carousel
+//= require bootstrap-datepicker
 //= require_tree .

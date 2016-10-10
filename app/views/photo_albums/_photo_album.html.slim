@@ -11,6 +11,10 @@
           = link_to photo_album.title, photo_album
         - else
           = photo_album.title
+        - if photo_album.taken_at.present?
+          span.taken-at
+            | &nbsp;-
+            =< @photo_album_presenter.show_date(photo_album.taken_at)
     - if photo_album.photos.any?
       .panel-collapse.collapse class = (current_user.present? ? '' : 'in') id = "collapse_#{photo_album.id}"
         .panel-body

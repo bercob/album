@@ -1,6 +1,7 @@
 class PhotoAlbumsController < ApplicationController
   before_action :require_login, except: [:index, :show]
   before_action :set_photo_album, only: [:show, :destroy, :edit, :update]
+  before_action :set_photo_album_presenter, only: [:index, :show, :edit, :new]
 
   def index
     @photo_albums = PhotoAlbum.top_parents.order('updated_at desc')
@@ -64,7 +65,7 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def photo_album_params
-    params.require(:photo_album).permit(:title, :parent_id)
+    params.require(:photo_album).permit(:title, :parent_id, :taken_at)
   end
 
   def photos_params
@@ -74,6 +75,10 @@ class PhotoAlbumsController < ApplicationController
 
   def redirect_path(photo_album)
     "#{photo_albums_path}/#{photo_album.parent_id}"
+  end
+
+  def set_photo_album_presenter
+    @photo_album_presenter = PhotoAlbumPresenter.new
   end
 
 end

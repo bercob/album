@@ -1,0 +1,45 @@
+sk:
+  common:
+    app_name: Rodinný album
+    confirms:
+      are_you_sure: Ste si istý ?
+  navigation:
+    menu:
+      upload: Nahrať album
+      edit: Editovať
+      logout: Odhlásiť sa
+      login: Prihlásiť sa
+      home: Home
+    labels:
+      logged: Prihlásený
+      back: Späť
+  sessions:
+    labels:
+      email: Email
+      password: Heslo
+      login: Prihlásenie
+    alerts:
+      login_first: Musíte byť prihlásený.
+      authenticate_failed: Autentifikácia zlyhala.
+    notices:
+      logout_ok: Úspešne ste sa odhlásili.
+      login_ok: Úspešne ste sa prihlásili.
+  photos:
+    notices:
+      added: Obrázky boli pridané.
+      destroyed: Obrázok bol odstránený.
+    labels:
+      upload: Nahrať obrázok
+      delete: Zmazať obrázok
+  photo_albums:
+      notices:
+        added: Album bol pridaný.
+        destroyed: Album bol odstránený.
+        updated: Album bol upravený.
+      labels:
+        save: Uložiť album
+        delete: Zmazať album
+        edit: Editovať album
+
+  javascript:
+    date_format: dd.mm.yyyy

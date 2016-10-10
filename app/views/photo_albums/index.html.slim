@@ -4,6 +4,10 @@
       .panel-title
         .pull-left
           = @photo_album.title
+          - if @photo_album.taken_at.present?
+            span.taken-at
+              | &nbsp;-
+              =< @photo_album_presenter.show_date(@photo_album.taken_at)
         .pull-right
           = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}"
         .clearfix
