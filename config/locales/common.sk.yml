@@ -42,6 +42,7 @@ sk:
         save: Uložiť album
         delete: Zmazať album
         edit: Editovať album
+        processing: Spracovanie...
 
   javascript:
     date_format: dd.mm.yyyy

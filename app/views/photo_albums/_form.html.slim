@@ -9,9 +9,11 @@
     span.input-group-addon
       i.glyphicon.glyphicon-calendar
   = pa.hidden_field :parent_id, value: params[:parent_id]
+  br
   = simple_form_for :photos, html: {multipart: true} do |p|
     = p.input :images, label: t('activerecord.attributes.photo.images'), as: :file, :input_html => { :multiple => true }
-    = p.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success'
+    br
+    = p.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success', data: { disable_with: t('photo_albums.labels.processing')}
 
 javascript:
   var current_date = new Date();

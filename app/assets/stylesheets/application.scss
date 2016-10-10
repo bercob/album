@@ -20,6 +20,11 @@
 @import 'bootstrap';
 @import 'lightbox-bootstrap';
 
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.5em;
+}
+
 .row-relative {
   position: relative;
 }
@@ -38,8 +43,16 @@
   margin: 15px;
 }
 
+.panel-title, .btn {
+  font-size: 1em;
+}
+
 .panel-title .taken-at {
   font-style: italic;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: gray;
+}
+
+.datepicker {
+  font-size: 0.9em;
 }

@@ -42,6 +42,7 @@ en:
         save: Save photo album
         delete: Delete photo album
         edit: Edit photo album
+        processing: Processing...
 
   javascript:
     date_format: yyyy-mm-dd
