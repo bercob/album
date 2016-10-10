@@ -5,15 +5,16 @@ en:
         user:
           attributes:
             email:
-              blank: Email has to be set.
+              blank: has to be set
             password:
-              blank: Password has to be set.
+              blank: has to be set
         photo_album:
           attributes:
             title:
-              blank: Title has to be set.
+              blank: has to be set
     attributes:
       photo_album:
         title: Title
+        photos: Photos
       photo:
-        images: Images
+        images: Photos

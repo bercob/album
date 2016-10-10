@@ -1,4 +1,6 @@
 sk:
+  errors:
+    format: "%{attribute} %{message}"
   common:
     app_name: Rodinný album
     confirms:

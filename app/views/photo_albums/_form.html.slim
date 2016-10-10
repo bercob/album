@@ -8,7 +8,7 @@
       i.glyphicon.glyphicon-calendar
   = pa.hidden_field :parent_id, value: params[:parent_id]
   = simple_form_for :photos, html: {multipart: true} do |p|
-    = p.input :images, as: :file, :input_html => { :multiple => true }
+    = p.input :images, label: t('activerecord.attributes.photo.images'), as: :file, :input_html => { :multiple => true }
     = p.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success'
 
 javascript:

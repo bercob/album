@@ -13,7 +13,7 @@
 class PhotoAlbumsController < ApplicationController
   before_action :require_login, except: [:index, :show]
   before_action :set_photo_album, only: [:show, :destroy, :edit, :update]
-  before_action :set_photo_album_presenter, only: [:index, :show, :edit, :new]
+  before_action :set_photo_album_presenter, except: [:destroy]
 
   def index
     @photo_albums = PhotoAlbum.top_parents.ordered
@@ -36,6 +36,7 @@ class PhotoAlbumsController < ApplicationController
       flash[:success] = t('photo_albums.notices.added')
       redirect_to redirect_path @photo_album
     else
+      flash[:error] = @photo_album.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -55,6 +56,7 @@ class PhotoAlbumsController < ApplicationController
       flash[:success] = t('photo_albums.notices.updated')
       redirect_to redirect_path @photo_album
     else
+      flash[:error] = @photo_album.errors.full_messages.to_sentence
       render :edit
     end
   end

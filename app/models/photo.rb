@@ -16,12 +16,11 @@ class Photo < ActiveRecord::Base
   belongs_to :photo_album
 
   has_attached_file :image,
-                    styles: { thumb: ['100x100#', :jpg],
-                              original: ['800x800>', :jpg] },
-                    convert_options: { thumb: "-quality 75 -strip",
-                                       original: "-quality 85 -strip" }
+                    styles: { thumb: PHOTO_STYLE_THUMB,
+                              original: PHOTO_STYLE_ORIGINAL },
+                    convert_options: PHOTO_CONVERT_OPTIONS
 
   validates_attachment :image,
-                       content_type: { content_type: ['image/jpeg', 'image/gif', 'image/png'] }
+                       content_type: { content_type: PHOTO_CONTENT_TYPES }
 
 end

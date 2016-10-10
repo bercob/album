@@ -1,4 +1,6 @@
 en:
+  errors:
+    format: "%{attribute} %{message}"
   common:
     app_name: Family album
     confirms:

@@ -5,15 +5,16 @@ sk:
         user:
           attributes:
             email:
-              blank: Email musí byť zadaný.
+              blank: musí byť zadaný
             password:
-              blank: Heslo musí byť zadané.
+              blank: musí byť zadané
         photo_album:
           attributes:
             title:
-              blank: Názov musí byť zadaný.
+              blank: musí byť zadaný
     attributes:
       photo_album:
         title: Názov
+        photos: Obrázky
       photo:
         images: Obrázky

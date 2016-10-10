@@ -1,5 +1,24 @@
 default: &default
 
+  photo_style_thumb:
+    - '100x100#'
+    - :jpg
+
+  photo_style_original:
+   - '800x800>'
+   - :jpg
+
+  photo_convert_options:
+    {
+      thumb: '-quality 75 -strip',
+      original: '-quality 85 -strip'
+    }
+
+  photo_content_types:
+    - 'image/jpeg'
+    - 'image/gif'
+    - 'image/png'
+
 development:
   <<: *default
 

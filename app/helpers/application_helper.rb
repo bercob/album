@@ -1,9 +1,9 @@
 module ApplicationHelper
   def flash_alert_class(key)
     case key.to_sym
-    when :notice
+    when :notice, :success
       'alert-success'
-    when :alert
+    when :alert, :error
       'alert-danger'
     else
       'alert-info'
