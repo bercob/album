@@ -10,8 +10,8 @@ default: &default
 
   photo_convert_options:
     {
-      thumb: '-quality 75 -strip',
-      original: '-quality 85 -strip'
+      thumb: '-quality 80 -strip',
+      original: '-quality 100 -strip'
     }
 
   photo_content_types:
