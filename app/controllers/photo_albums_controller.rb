@@ -1,10 +1,22 @@
+# == Schema Information
+#
+# Table name: photo_albums
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  parent_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  taken_at   :date
+#
+
 class PhotoAlbumsController < ApplicationController
   before_action :require_login, except: [:index, :show]
   before_action :set_photo_album, only: [:show, :destroy, :edit, :update]
   before_action :set_photo_album_presenter, only: [:index, :show, :edit, :new]
 
   def index
-    @photo_albums = PhotoAlbum.top_parents.order('updated_at desc')
+    @photo_albums = PhotoAlbum.top_parents.ordered
   end
 
   def new
@@ -54,7 +66,7 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def show
-    @photo_albums = @photo_album.children.order('updated_at desc')
+    @photo_albums = @photo_album.children.ordered
     render :index
   end
 
