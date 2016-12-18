@@ -1,0 +1,57 @@
+.navbar, .navbar-default {
+  border-radius: 0;
+  border: none;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.nav li {
+  display: inline;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #337ab7;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #337ab7;
+}
+
+.navbar-default .navbar-nav li a:hover {
+  background-color: #337ab7;
+  color: white;
+  transition: 0.7s all linear;
+  height: 100%;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #337ab7;
+  text-align: center;
+}
+
+.navbar-default .navbar-toggle {
+  background-color: white;
+  border-color: #337ab7;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #337ab7;
+}
+
+.navbar-default .navbar-toggle:hover {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+  background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus {
+  background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus .icon-bar {
+  background-color: #337ab7;
+}

@@ -19,13 +19,14 @@
       .panel-collapse.collapse class = (current_user.present? ? '' : 'in') id = "collapse_#{photo_album.id}"
         .panel-body
           - if current_user.present?
-            - photo_album.photos.each do |p|
-              .row.row-relative
-                .col-md-2.text-left
-                  = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
-                .col-md-10.text-left.bottom-column
-                  = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete,
-                          data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
+            .flex-container
+              - photo_album.photos.each do |p|
+                .flex-item
+                  .photo-thumb
+                    = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
+                  .photo-action
+                    = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete,
+                            data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
           - else
             .row-fluid
               .span12

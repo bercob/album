@@ -1,13 +1,21 @@
-.panel.panel-primary
-  .panel-body.menu
-    ul.nav.nav-pills role = 'tablist'
-      li class = (request.path == root_path || request.path == photo_albums_path ? 'active' : '')
-        = link_to t('common.app_name'), root_path
-      - if current_user.present?
-        li class = (request.path == new_photo_album_path ? 'active' : '')
-          = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
-        li
-          = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
-      - else
-        li class = (request.path == login_path ? 'active' : '')
-          = link_to t('navigation.menu.login'), login_path
+nav.navbar.navbar-default.navbar-static-top role="navigation"
+  .container
+    .navbar-header
+      = button_tag nil, name: nil, type: 'button', class: 'navbar-toggle collapsed', data: {toggle: 'collapse', target: '#MenuContainer'}
+        span.sr-only
+          | Menu
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    .collapse.navbar-collapse id='MenuContainer'
+      ul.nav.navbar-nav
+        li class = (request.path == root_path || request.path == photo_albums_path ? 'active' : '')
+          = link_to t('common.app_name'), root_path
+        - if current_user.present?
+          li class = (request.path == new_photo_album_path ? 'active' : '')
+            = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
+          li
+            = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
+        - else
+          li class = (request.path == login_path ? 'active' : '')
+            = link_to t('navigation.menu.login'), login_path

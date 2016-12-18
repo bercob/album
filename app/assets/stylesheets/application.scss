@@ -19,6 +19,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'lightbox-bootstrap';
+@import 'navigation';
 
 body {
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -61,3 +62,20 @@ body {
   max-width: none;
   width: 100px;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.flex-item {
+  text-align: center;
+  margin: 5px;
+}
+
+.photo-thumb {
+  margin-bottom: 5px;
+}
+

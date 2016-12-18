@@ -4,10 +4,16 @@ html
   = render 'layouts/head'
 
   body
-    .container-fluid
-      = render 'layouts/lang'
-      = render 'layouts/navigation'
-      = render 'layouts/flash_messages'
+    .container
+      .row
+        .col-md-12.text-right
+          = render 'layouts/lang'
+      .row
+        .col-md-12
+          = render 'layouts/navigation'
+      .row
+        .col-md-10.col-md-offset-1.text-center
+          = render 'layouts/flash_messages'
       .row
         .col-md-10.col-md-offset-1
           = yield
