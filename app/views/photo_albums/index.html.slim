@@ -16,3 +16,21 @@
       = render @photo_albums
 - else
   = render @photo_albums
+
+javascript:
+    $(document).ready(function () {
+
+        $(".owl-carousel").owlCarousel({
+
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            nav: true,
+
+            items: 12, // items above 1000px browser width
+            itemsDesktop: [1000, 10], // items between 1000px and 901px
+            itemsDesktopSmall: [900, 8], // betweem 900px and 601px
+            itemsTablet: [600, 6], // items between 600 and 0
+            itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+        });
+
+    });

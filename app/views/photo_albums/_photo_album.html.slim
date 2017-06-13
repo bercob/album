@@ -34,27 +34,10 @@
                   .owl-wrapper-outer.owl-wrapper
                   - photo_album.photos.each do |p|
                     .owl-item.item
-                      = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), p.image.url, data: { toggle: 'lightbox', gallery: photo_album.title, title: p.image_file_name }
+                      = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), p.image.url,
+                              data: { toggle: 'lightbox', gallery: photo_album.title, title: "#{p.image_file_name} <a href='#{p.image.url}' target='_blank'><span class='glyphicon glyphicon-download-alt'></span></a>" }
   - if current_user.present?
     br
     = link_to t('photo_albums.labels.edit'), edit_photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-success'
     =< link_to t('photo_albums.labels.delete'), photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-danger', method: :delete,
             data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
-
-javascript:
-  $(document).ready(function () {
-
-    $(".owl-carousel").owlCarousel({
-
-      autoPlay: 3000, //Set AutoPlay to 3 seconds
-      nav: true,
-
-      items: 12, // items above 1000px browser width
-      itemsDesktop: [1000, 10], // items between 1000px and 901px
-      itemsDesktopSmall: [900, 8], // betweem 900px and 601px
-      itemsTablet: [600, 6], // items between 600 and 0
-      itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
-
-    });
-
-  });
