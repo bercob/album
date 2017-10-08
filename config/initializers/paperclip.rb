@@ -11,6 +11,9 @@ raise 'photo_style_thumb value is not defined in general.yml' if PHOTO_STYLE_THU
 PHOTO_STYLE_ORIGINAL = Rails.application.config_for(:general)['photo_style_original']
 raise 'photo_style_original value is not defined in general.yml' if PHOTO_STYLE_ORIGINAL.blank?
 
+PHOTO_STYLE_SHOWED = Rails.application.config_for(:general)['photo_style_showed']
+raise 'photo_style_showed value is not defined in general.yml' if PHOTO_STYLE_SHOWED.blank?
+
 PHOTO_CONVERT_OPTIONS = Rails.application.config_for(:general)['photo_convert_options']
 raise 'photo_convert_options value is not defined in general.yml' if PHOTO_CONVERT_OPTIONS.blank?
 

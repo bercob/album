@@ -5,14 +5,18 @@ default: &default
     - :jpg
 
   photo_style_original:
+    -
+
+  photo_style_showed:
    - '800x800>'
    - :jpg
 
   photo_convert_options:
     {
       thumb: '-quality 80 -strip',
-      original: '-quality 100 -strip'
-    }
+      original: '',
+      showed: '-quality 100 -strip'
+      }
 
   photo_content_types:
     - 'image/jpeg'
