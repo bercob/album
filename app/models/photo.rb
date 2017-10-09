@@ -17,23 +17,23 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :image,
                     styles: {
-                        thumb: PHOTO_STYLE_THUMB,
                         original: PHOTO_STYLE_ORIGINAL,
-                        showed: PHOTO_STYLE_SHOWED
+                        showed: PHOTO_STYLE_SHOWED,
+                        thumb: PHOTO_STYLE_THUMB
                     },
                     convert_options: PHOTO_CONVERT_OPTIONS
 
   validates_attachment :image,
                        content_type: { content_type: PHOTO_CONTENT_TYPES }
 
-  def showed_exist?
+  def showed_photo_exist?
     begin
       url = URI.parse(image.url(:showed))
       req = Net::HTTP.new(url.host, url.port)
       res = req.request_head(url.path)
       res.try(:code) == '200'
     rescue SocketError => e
-      Rails.logger "showed_exist? exception: #{e}"
+      Rails.logger "showed_photo_exist? exception: #{e}"
       false
     end
   end

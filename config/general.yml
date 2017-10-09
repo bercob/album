@@ -8,8 +8,8 @@ default: &default
     -
 
   photo_style_showed:
-   - '800x800>'
-   - :jpg
+    - '800x800>'
+    - :jpg
 
   photo_convert_options:
     {
