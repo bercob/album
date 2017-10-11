@@ -10,6 +10,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  photo_album_id     :integer
+#  direct_upload_url  :string
 #
 
 require 'test_helper'

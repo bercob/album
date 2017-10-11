@@ -30,15 +30,17 @@ gem 'sorcery'
 
 gem 'simple_form'
 
-gem 'paperclip'
+gem 'paperclip', '~> 4.2'
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'lightbox-bootstrap-rails'
 
 gem 'owlcarousel-rails'
 
 gem 'bootstrap-datepicker-rails'
+
+gem 's3_direct_upload', git: 'https://github.com/RobotsAndPencils/s3_direct_upload.git'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

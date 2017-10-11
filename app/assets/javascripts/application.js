@@ -17,4 +17,5 @@
 //= require lightbox-bootstrap
 //= require owl.carousel
 //= require bootstrap-datepicker
+//= require s3_direct_upload
 //= require_tree .

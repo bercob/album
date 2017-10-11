@@ -10,9 +10,13 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  photo_album_id     :integer
+#  direct_upload_url  :string
 #
 
 class Photo < ActiveRecord::Base
+  BUCKET_NAME = ENV['S3_BUCKET_NAME']
+  DIRECT_UPLOAD_URL_FORMAT = %r{\Ahttps:\/\/s3\.#{ENV['AWS_REGION']}.amazonaws\.com\/#{BUCKET_NAME}\/(?<path>uploads\/.+\/(?<filename>.+))\z}.freeze
+
   belongs_to :photo_album
 
   has_attached_file :image,
@@ -26,15 +30,62 @@ class Photo < ActiveRecord::Base
   validates_attachment :image,
                        content_type: { content_type: PHOTO_CONTENT_TYPES }
 
-  def showed_photo_exist?
-    begin
-      url = URI.parse(image.url(:showed))
-      req = Net::HTTP.new(url.host, url.port)
-      res = req.request_head(url.path)
-      res.try(:code) == '200'
-    rescue SocketError => e
-      Rails.logger "showed_photo_exist? exception: #{e}"
-      false
+  validates :direct_upload_url, presence: true, format: { with: DIRECT_UPLOAD_URL_FORMAT }
+
+  before_create :set_upload_attributes
+  after_create :finalize_and_cleanup
+
+  # Store an unescaped version of the escaped URL that Amazon returns from direct upload.
+  def direct_upload_url=(escaped_url)
+    write_attribute(:direct_upload_url, (CGI.unescape(escaped_url) rescue nil))
+  end
+  
+  # Final upload processing step:
+  #
+  # 1) If the file does not require processing, manually copy direct upload to
+  #   the location that Paperclip expects, saving transfer time/cost.
+  #   If the file requires post-processing, set the direct_upload_url as the photo's remote source,
+  #   which instantiates download, process, and re-upload of the file via Paperclip callbacks.
+  # 2) Flag photo as processed
+  # 3) Delete the temp upload from s3.
+  #
+  # @see http://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectUsingRuby.html
+  def finalize_and_cleanup
+    direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(self.direct_upload_url)
+
+    s3 = AWS::S3.new
+
+    self.image = URI.parse(URI.escape(self.direct_upload_url))
+
+    self.save
+
+    s3.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].delete
+  end
+
+  protected
+
+  # Optional: Set attachment attributes from the direct upload instead of original upload callback params
+  # @note Retry logic handles occasional S3 "eventual consistency" lag.
+  def set_upload_attributes
+    tries ||= 5
+    direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(direct_upload_url)
+
+    s3 = AWS::S3.new
+
+    direct_upload_head = s3.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].head
+
+    self.image_file_name     = direct_upload_url_data[:filename]
+    self.image_file_size     = direct_upload_head.content_length
+    self.image_content_type  = direct_upload_head.content_type
+    self.image_updated_at    = direct_upload_head.last_modified
+  rescue AWS::S3::Errors::NoSuchKey => e
+    tries -= 1
+    if tries > 0
+      sleep(3)
+      retry
+    else
+      raise e
     end
   end
+
 end

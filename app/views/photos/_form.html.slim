@@ -1,0 +1,21 @@
+= s3_uploader_form id: 's3-uploader',
+        callback_url: photos_url(photo_album_id: params[:photo_album_id]),
+        callback_param: 'photo[direct_upload_url]',
+        expiration: 24.hours.from_now.utc.iso8601,
+        max_file_size: 10.megabytes
+  = file_field_tag :file, multiple: true
+
+br
+div#uploads_container
+
+script id='template-upload' type='text/x-tmpl'
+  .upload id='upload_{%=o.unique_id%}'
+    | {%=o.name%}
+    .progress.progress-striped.active
+      .bar style='width: 0%'
+
+javascript:
+    if (!window.location.hash) {
+        window.location = window.location + '#refreshed';
+        window.location.reload();
+    }

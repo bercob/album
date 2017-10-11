@@ -7,7 +7,8 @@ sk:
       are_you_sure: Ste si istý ?
   navigation:
     menu:
-      upload: Nahrať album
+      upload: Nahrať
+      create: Vytvoriť
       edit: Editovať
       logout: Odhlásiť sa
       login: Prihlásiť sa
@@ -42,6 +43,7 @@ sk:
         save: Uložiť album
         delete: Zmazať album
         edit: Editovať album
+        add_photos: Pridať fotky
         processing: Spracovanie...
 
   javascript:

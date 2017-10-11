@@ -10,10 +10,19 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  photo_album_id     :integer
+#  direct_upload_url  :string
 #
 
 class PhotosController < ApplicationController
   before_action :require_login
+  before_action :set_photo_album, only: [:create]
+
+  def new
+  end
+
+  def create
+    @photo = @photo_album.photos.create(photo_params)
+  end
 
   def destroy
     photo = Photo.find(params[:id])
@@ -23,4 +32,13 @@ class PhotosController < ApplicationController
     redirect_to "#{photo_albums_path}/#{parent_id}"
   end
 
+  private
+
+  def photo_params
+    params.require(:photo).permit(:direct_upload_url)
+  end
+
+  def set_photo_album
+    @photo_album = PhotoAlbum.find(params[:photo_album_id])
+  end
 end

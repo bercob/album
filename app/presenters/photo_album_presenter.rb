@@ -12,6 +12,6 @@ class PhotoAlbumPresenter
   end
 
   def photo_url(photo)
-    photo.showed_photo_exist? ? photo.image.url(:showed) : photo.image.url
+    photo.image.url(:showed)
   end
 end

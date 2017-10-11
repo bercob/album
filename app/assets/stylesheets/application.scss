@@ -13,6 +13,7 @@
  *= require owl.carousel
  *= require owl.theme
  *= require bootstrap-datepicker3
+ *= require s3_direct_upload_progress_bars
  *= require_tree .
  *= require_self
  */
@@ -77,5 +78,9 @@ body {
 
 .photo-thumb {
   margin-bottom: 5px;
+}
+
+.progress {
+  height: 10px;
 }
 

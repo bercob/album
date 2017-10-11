@@ -13,7 +13,7 @@ nav.navbar.navbar-default.navbar-static-top role="navigation"
           = link_to t('common.app_name'), root_path
         - if current_user.present?
           li class = (request.path == new_photo_album_path ? 'active' : '')
-            = link_to t('navigation.menu.upload'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
+            = link_to t('navigation.menu.create'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
           li
             = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
         - else

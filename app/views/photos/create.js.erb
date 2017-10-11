@@ -1,0 +1,6 @@
+<% if @photo.persisted? %>
+  $('#upload_<%=params[:unique_id]%>').hide();
+  $('#uploads_container').append("<%= j(render partial: 'uploaded', locals: { photo: @photo }) %>");
+<% else %>
+  $('#upload_<%=params[:unique_id]%> div.progress').removeClass('active progress-striped').addClass('progress-danger');
+<% end %>

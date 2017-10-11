@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
-  resources :photos, only: [:destroy]
+  resources :photos, only: [:new, :create, :destroy]
 
   resources :photo_albums, only: [:index, :new, :destroy, :create, :show, :edit, :update]
 

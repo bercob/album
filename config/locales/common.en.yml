@@ -8,6 +8,7 @@ en:
   navigation:
     menu:
       upload: Upload
+      create: Create
       edit: Edit
       logout: Logout
       login: Login
@@ -42,6 +43,7 @@ en:
         save: Save photo album
         delete: Delete photo album
         edit: Edit photo album
+        add_photos: Add photos
         processing: Processing...
 
   javascript:
