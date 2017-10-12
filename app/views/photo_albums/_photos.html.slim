@@ -3,7 +3,7 @@
     .panel-body
       - if current_user.present?
         .flex-container
-          - photo_album.photos.each do |p|
+          - photo_album.photos.processed.each do |p|
             .flex-item
               .photo-thumb
                 = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p), data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }

@@ -42,6 +42,8 @@ gem 'bootstrap-datepicker-rails'
 
 gem 's3_direct_upload', git: 'https://github.com/RobotsAndPencils/s3_direct_upload.git'
 
+gem 'delayed_job_active_record'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -19,6 +19,8 @@ class Photo < ActiveRecord::Base
 
   belongs_to :photo_album
 
+  scope :processed, -> { where(processed: true) }
+
   has_attached_file :image,
                     styles: {
                         original: PHOTO_STYLE_ORIGINAL,
@@ -33,7 +35,7 @@ class Photo < ActiveRecord::Base
   validates :direct_upload_url, presence: true, format: { with: DIRECT_UPLOAD_URL_FORMAT }
 
   before_create :set_upload_attributes
-  after_create :finalize_and_cleanup
+  after_create :queue_finalize_and_cleanup
 
   # Store an unescaped version of the escaped URL that Amazon returns from direct upload.
   def direct_upload_url=(escaped_url)
@@ -50,16 +52,14 @@ class Photo < ActiveRecord::Base
   # 3) Delete the temp upload from s3.
   #
   # @see http://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectUsingRuby.html
-  def finalize_and_cleanup
-    direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(self.direct_upload_url)
+  def self.finalize_and_cleanup(id)
+    photo = Photo.find(id)
 
-    s3 = AWS::S3.new
+    direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(photo.direct_upload_url)
 
-    self.image = URI.parse(URI.escape(self.direct_upload_url))
+    photo.update image: URI.parse(URI.escape(photo.direct_upload_url)), processed: true
 
-    self.save
-
-    s3.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].delete
+    AWS::S3.new.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].delete
   end
 
   protected
@@ -70,9 +70,7 @@ class Photo < ActiveRecord::Base
     tries ||= 5
     direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(direct_upload_url)
 
-    s3 = AWS::S3.new
-
-    direct_upload_head = s3.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].head
+    direct_upload_head = AWS::S3.new.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].head
 
     self.image_file_name     = direct_upload_url_data[:filename]
     self.image_file_size     = direct_upload_head.content_length
@@ -88,4 +86,8 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  # Queue final file processing
+  def queue_finalize_and_cleanup
+    Photo.delay.finalize_and_cleanup(id)
+  end
 end
