@@ -3,7 +3,7 @@
     .panel-heading
       .panel-title
         .pull-left
-          - if current_user.present? && @photo_album.photos.any?
+          - if current_user.present? && @photo_album.photos.processed.any?
             = link_to content_tag(:span, '', class: 'glyphicon glyphicon-option-vertical'), "#collapse_#{@photo_album.id}", data: { toggle: 'collapse' }
             | &nbsp;
           = @photo_album.title

@@ -21,7 +21,6 @@ class PhotoAlbumsController < ApplicationController
 
   def new
     @photo_album = PhotoAlbum.new
-    # @photo_album.photos.build
   end
 
   def create
