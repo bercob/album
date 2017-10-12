@@ -23,6 +23,9 @@ default: &default
     - 'image/gif'
     - 'image/png'
 
+  # photo maximum size in MB
+  photo_max_size: 100
+
 development:
   <<: *default
 

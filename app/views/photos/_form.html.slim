@@ -2,7 +2,7 @@
         callback_url: photos_url(photo_album_id: params[:photo_album_id]),
         callback_param: 'photo[direct_upload_url]',
         expiration: 24.hours.from_now.utc.iso8601,
-        max_file_size: 10.megabytes
+        max_file_size: PHOTO_MAX_SIZE.megabytes
   = file_field_tag :file, multiple: true
 
 br
@@ -19,3 +19,25 @@ javascript:
         window.location = window.location + '#refreshed';
         window.location.reload();
     }
+
+    $(function () {
+        $('#s3-uploader').S3Uploader(
+            {
+                remove_completed_progress_bar: false,
+                progress_bar_target: $('#uploads_container'),
+                before_add: function (file) {
+                    if (file.size > #{PHOTO_MAX_SIZE.megabytes}) {
+                        alert('#{"Maximum file size is #{PHOTO_MAX_SIZE} MB"}');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        );
+
+        // error handling
+        $('#s3-uploader').bind('s3_upload_failed', function (e, content) {
+            return alert(content.filename + ' failed to upload.');
+        });
+    });
