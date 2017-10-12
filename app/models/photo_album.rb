@@ -8,6 +8,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  taken_at   :date
+#  deleted    :boolean          default(FALSE), not null
 #
 
 class PhotoAlbum < ActiveRecord::Base
@@ -19,8 +20,13 @@ class PhotoAlbum < ActiveRecord::Base
 
   scope :top_parents, -> { where(parent_id: nil) }
   scope :ordered, -> { order(taken_at: :desc, updated_at: :desc) }
+  scope :not_deleted, -> { where(deleted: false) }
 
   def has_child?
     children.any?
+  end
+
+  def self.clean(id)
+    PhotoAlbum.find(id).destroy
   end
 end

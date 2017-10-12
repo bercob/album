@@ -11,6 +11,7 @@
 #  image_updated_at   :datetime
 #  photo_album_id     :integer
 #  direct_upload_url  :string
+#  processed          :boolean          default(FALSE), not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

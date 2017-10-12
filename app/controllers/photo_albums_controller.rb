@@ -8,6 +8,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  taken_at   :date
+#  deleted    :boolean          default(FALSE), not null
 #
 
 class PhotoAlbumsController < ApplicationController
@@ -16,7 +17,7 @@ class PhotoAlbumsController < ApplicationController
   before_action :set_photo_album_presenter, except: [:destroy]
 
   def index
-    @photo_albums = PhotoAlbum.top_parents.ordered
+    @photo_albums = PhotoAlbum.not_deleted.top_parents.ordered
   end
 
   def new
@@ -50,7 +51,9 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def destroy
-    @photo_album.destroy
+    @photo_album.update deleted: true
+    PhotoAlbum.delay.clean(@photo_album.id)
+
     flash[:success] = t('photo_albums.notices.destroyed')
     redirect_to redirect_path @photo_album.parent_id
   end

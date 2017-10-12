@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012133455) do
+ActiveRecord::Schema.define(version: 20171012210732) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20171012133455) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "taken_at"
+    t.boolean  "deleted",    default: false, null: false
   end
 
+  add_index "photo_albums", ["deleted"], name: "index_photo_albums_on_deleted"
   add_index "photo_albums", ["parent_id"], name: "index_photo_albums_on_parent_id"
 
   create_table "photos", force: :cascade do |t|
