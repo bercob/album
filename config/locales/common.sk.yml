@@ -29,10 +29,11 @@ sk:
       login_ok: Úspešne ste sa prihlásili.
   photos:
     notices:
-      added: Obrázky boli pridané.
-      destroyed: Obrázok bol odstránený.
+      added: Fotky boli pridané.
+      destroyed: Fotka bola odstránená.
     labels:
       upload: Nahrať fotky
+      upload_to_album: Nahrať fotky do "%{photo_album_title}"
       delete: Zmazať fotku
       add_photos: Pridať fotky
   photo_albums:

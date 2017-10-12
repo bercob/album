@@ -33,6 +33,7 @@ en:
       destroyed: The photo was destroyed.
     labels:
       upload: Upload photos
+      upload_to_album: Upload photos to "%{photo_album_title}"
       delete: Delete photo
       add_photos: Add photos
   photo_albums:

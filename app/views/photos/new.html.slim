@@ -4,7 +4,7 @@
       .panel-heading
         .panel-title
           .pull-left
-            = t('photos.labels.upload')
+            = t('photos.labels.upload_to_album', photo_album_title: @photo_album.title)
           .pull-right
             = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{@photo_album.id}"
           .clearfix

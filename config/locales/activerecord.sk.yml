@@ -15,7 +15,7 @@ sk:
     attributes:
       photo_album:
         title: Názov
-        photos: Obrázky
+        photos: Fotky
         taken_at: Vyhotovený
       photo:
-        images: Obrázky
+        images: Fotky
