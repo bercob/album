@@ -3,14 +3,19 @@
     .panel-heading
       .panel-title
         .pull-left
+          - if current_user.present? && @photo_album.photos.any?
+            = link_to content_tag(:span, '', class: 'glyphicon glyphicon-option-vertical'), "#collapse_#{@photo_album.id}", data: { toggle: 'collapse' }
+            | &nbsp;
           = @photo_album.title
           - if @photo_album.taken_at.present?
             span.taken-at
               | &nbsp;-
               =< @photo_album_presenter.show_date(@photo_album.taken_at)
         .pull-right
-          = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{PhotoAlbum.find(params[:id]).parent_id}"
+          = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{@photo_album.parent_id}"
         .clearfix
+    = render partial: 'photo_albums/photos', locals: { photo_album: @photo_album }
+  = render partial: 'photo_albums/action_buttons', locals: { photo_album: @photo_album }
   .row-panel-body
     - if @photo_albums.any?
       = render @photo_albums

@@ -29,7 +29,7 @@ class PhotoAlbumsController < ApplicationController
 
     if @photo_album.save
       flash[:success] = t('photo_albums.notices.added')
-      redirect_to redirect_path @photo_album
+      redirect_to redirect_path @photo_album.id
     else
       flash[:error] = @photo_album.errors.full_messages.to_sentence
       render :new
@@ -43,7 +43,7 @@ class PhotoAlbumsController < ApplicationController
   def update
     if @photo_album.update photo_album_params
       flash[:success] = t('photo_albums.notices.updated')
-      redirect_to redirect_path @photo_album
+      redirect_to redirect_path @photo_album.id
     else
       flash[:error] = @photo_album.errors.full_messages.to_sentence
       render :edit
@@ -53,7 +53,7 @@ class PhotoAlbumsController < ApplicationController
   def destroy
     @photo_album.destroy
     flash[:success] = t('photo_albums.notices.destroyed')
-    redirect_to redirect_path @photo_album
+    redirect_to redirect_path @photo_album.parent_id
   end
 
   def show
@@ -71,8 +71,8 @@ class PhotoAlbumsController < ApplicationController
     params.require(:photo_album).permit(:title, :parent_id, :taken_at)
   end
   
-  def redirect_path(photo_album)
-    "#{photo_albums_path}/#{photo_album.parent_id}"
+  def redirect_path(photo_album_id)
+    "#{photo_albums_path}/#{photo_album_id}"
   end
 
   def set_photo_album_presenter

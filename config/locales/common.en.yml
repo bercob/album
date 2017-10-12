@@ -8,7 +8,7 @@ en:
   navigation:
     menu:
       upload: Upload
-      create: Create
+      create: Create album
       edit: Edit
       logout: Logout
       login: Login
@@ -32,18 +32,19 @@ en:
       added: The photo(s) was added.
       destroyed: The photo was destroyed.
     labels:
-      upload: Upload
-      delete: Delete picture
+      upload: Upload photos
+      delete: Delete photo
+      add_photos: Add photos
   photo_albums:
       notices:
         added: The photo album was added.
         destroyed: The photo album was destroyed.
         updated: The photo album was updated.
       labels:
+        create: Create photo album
         save: Save photo album
         delete: Delete photo album
         edit: Edit photo album
-        add_photos: Add photos
         processing: Processing...
 
   javascript:

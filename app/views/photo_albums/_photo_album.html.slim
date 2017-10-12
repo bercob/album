@@ -5,40 +5,12 @@
         - if current_user.present? && photo_album.photos.any?
           = link_to content_tag(:span, '', class: 'glyphicon glyphicon-option-vertical'), "#collapse_#{photo_album.id}", data: { toggle: 'collapse' }
           | &nbsp;
-        - if current_user.present? || photo_album.has_child?
-          = link_to content_tag(:span, '', class: 'glyphicon glyphicon-folder-open'), photo_album
-          | &nbsp; &nbsp;
-          = link_to photo_album.title, photo_album
-        - else
-          = photo_album.title
+        = link_to content_tag(:span, '', class: 'glyphicon glyphicon-folder-open'), photo_album
+        | &nbsp; &nbsp;
+        = link_to photo_album.title, photo_album
         - if photo_album.taken_at.present?
           span.taken-at
             | &nbsp;-
             =< @photo_album_presenter.show_date(photo_album.taken_at)
-    - if photo_album.photos.any?
-      .panel-collapse.collapse class = (current_user.present? ? '' : 'in') id = "collapse_#{photo_album.id}"
-        .panel-body
-          - if current_user.present?
-            .flex-container
-              - photo_album.photos.each do |p|
-                .flex-item
-                  .photo-thumb
-                    = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p), data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
-                  .photo-action
-                    = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete,
-                            data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
-          - else
-            .row-fluid
-              .span12
-                .owl-carousel.owl-theme
-                  .owl-wrapper-outer.owl-wrapper
-                  - photo_album.photos.each do |p|
-                    .owl-item.item
-                      = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p),
-                              data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
-  - if current_user.present?
-    br
-    = link_to t('photo_albums.labels.edit'), edit_photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-success'
-    =< link_to t('photo_albums.labels.add_photos'), new_photo_path(photo_album_id: photo_album.id), class: 'btn btn-success'
-    =< link_to t('photo_albums.labels.delete'), photo_album_path(photo_album, parent_id: params[:id]), class: 'btn btn-danger', method: :delete,
-            data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
+    = render partial: 'photo_albums/photos', locals: { photo_album: photo_album }
+  = render partial: 'photo_albums/action_buttons', locals: { photo_album: photo_album }
