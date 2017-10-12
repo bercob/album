@@ -59,7 +59,7 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def show
-    @photo_albums = @photo_album.children.ordered
+    @photo_albums = @photo_album.children.not_deleted.ordered
     render :index
   end
 
