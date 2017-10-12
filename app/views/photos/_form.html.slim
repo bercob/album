@@ -16,7 +16,7 @@ script id='template-upload' type='text/x-tmpl'
 
 javascript:
     if (!window.location.hash) {
-        window.location = window.location + '#refreshed';
+        window.location = window.location + '#reloaded';
         window.location.reload();
     }
 
@@ -27,7 +27,7 @@ javascript:
                 progress_bar_target: $('#uploads_container'),
                 before_add: function (file) {
                     if (file.size > #{PHOTO_MAX_SIZE.megabytes}) {
-                        alert('#{"Maximum file size is #{PHOTO_MAX_SIZE} MB"}');
+                        $('#uploads_container').append('<div>' + file.name + ' size is ' + (file.size / (1024*1024)).toFixed(2) + ' MB, max file size is #{PHOTO_MAX_SIZE} MB</div>');
                         return false;
                     } else {
                         return true;
@@ -38,6 +38,7 @@ javascript:
 
         // error handling
         $('#s3-uploader').bind('s3_upload_failed', function (e, content) {
-            return alert(content.filename + ' failed to upload.');
+            $('#upload_' + content.unique_id).hide();
+            $('#uploads_container').append('<div>' + content.filename + ' failed to upload</div>');
         });
     });
