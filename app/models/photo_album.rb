@@ -12,7 +12,7 @@
 #
 
 class PhotoAlbum < ActiveRecord::Base
-  has_many :photos, -> { order(id: :asc) }, dependent: :destroy
+  has_many :photos, dependent: :destroy
   has_many :children, class_name: 'PhotoAlbum', foreign_key: :parent_id, dependent: :destroy
   belongs_to :parent, class_name: 'PhotoAlbum'
 

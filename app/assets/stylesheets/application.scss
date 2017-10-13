@@ -64,6 +64,11 @@ body {
   width: 100px;
 }
 
+.img-showed {
+  max-width: none;
+  margin-top: 5px;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -73,11 +78,19 @@ body {
 
 .flex-item {
   text-align: center;
-  margin: 5px;
+  margin: 20px 5px 5px 5px;
+}
+
+.photo-show {
+  margin-bottom: 5px;
 }
 
 .photo-thumb {
   margin-bottom: 5px;
+}
+
+.photo-header-small {
+  font-size: 0.9em;
 }
 
 .progress {

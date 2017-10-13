@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012210732) do
+ActiveRecord::Schema.define(version: 20171013075519) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20171012210732) do
     t.boolean  "processed",          default: false, null: false
   end
 
+  add_index "photos", ["image_file_name"], name: "index_photos_on_image_file_name"
   add_index "photos", ["photo_album_id"], name: "index_photos_on_photo_album_id"
 
   create_table "users", force: :cascade do |t|

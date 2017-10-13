@@ -14,7 +14,7 @@
         .pull-right
           = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{@photo_album.parent_id}"
         .clearfix
-    = render partial: 'photo_albums/photos', locals: { photo_album: @photo_album }
+    = render partial: 'photo_albums/photos', locals: { photo_album: @photo_album, child: false }
   = render partial: 'photo_albums/action_buttons', locals: { photo_album: @photo_album }
   .row-panel-body
     - if @photo_albums.any?

@@ -3,10 +3,18 @@
     .panel-body
       - if current_user.present?
         .flex-container
-          - photo_album.photos.processed.each do |p|
+          - photo_album.photos.processed.ordered.each do |p|
             .flex-item
-              .photo-thumb
-                = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p), data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
+              - if child
+                .photo-header-small
+                  = p.image_file_name
+                .photo-thumb
+                  = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p), data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
+              - else
+                .photo-header
+                  = p.image_file_name
+                .photo-show
+                  = link_to image_tag(p.image.url(:showed), class: 'img-showed'), @photo_album_presenter.photo_url(p), data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
               .photo-action
                 = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete,
                         data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
@@ -15,7 +23,7 @@
           .span12
             .owl-carousel.owl-theme
               .owl-wrapper-outer.owl-wrapper
-              - photo_album.photos.processed.each do |p|
+              - photo_album.photos.processed.ordered.each do |p|
                 .owl-item.item
                   = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p),
                           data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
