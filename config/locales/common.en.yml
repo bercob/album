@@ -47,6 +47,7 @@ en:
         delete: Delete photo album
         edit: Edit photo album
         processing: Processing...
+        not_processed: Not processed
 
   javascript:
     date_format: yyyy-mm-dd

@@ -12,5 +12,6 @@
           span.taken-at
             | &nbsp;-
             =< @photo_album_presenter.show_date(photo_album.taken_at)
+        = render partial: 'photo_albums/not_processed', locals:  { photo_album: photo_album }
     = render partial: 'photo_albums/photos', locals: { photo_album: photo_album, child: true }
   = render partial: 'photo_albums/action_buttons', locals: { photo_album: photo_album }

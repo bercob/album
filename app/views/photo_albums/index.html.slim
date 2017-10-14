@@ -11,6 +11,7 @@
             span.taken-at
               | &nbsp;-
               =< @photo_album_presenter.show_date(@photo_album.taken_at)
+          = render partial: 'photo_albums/not_processed', locals:  { photo_album: @photo_album }
         .pull-right
           = link_to content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left'), "#{photo_albums_path}/#{@photo_album.parent_id}"
         .clearfix

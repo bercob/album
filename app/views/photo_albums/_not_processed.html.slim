@@ -1,0 +1,4 @@
+- if current_user.present? && photo_album.photos.not_processed.any?
+  span.not-processed
+    | &nbsp;
+    = "(#{t('photo_albums.labels.not_processed')}: #{photo_album.photos.not_processed.count})"

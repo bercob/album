@@ -21,6 +21,7 @@ class Photo < ActiveRecord::Base
   belongs_to :photo_album
 
   scope :processed, -> { where(processed: true) }
+  scope :not_processed, -> { where(processed: false) }
   scope :ordered, -> { order(image_file_name: :asc) }
 
   has_attached_file :image,

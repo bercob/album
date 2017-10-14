@@ -47,6 +47,7 @@ sk:
         delete: Zmazať album
         edit: Editovať album
         processing: Spracovanie...
+        not_processed: Nespracované
 
   javascript:
     date_format: dd.mm.yyyy
