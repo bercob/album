@@ -14,8 +14,12 @@ nav.navbar.navbar-default.navbar-static-top role="navigation"
         - if current_user.present?
           li class = (request.path == new_photo_album_path ? 'active' : '')
             = link_to t('navigation.menu.create'), params[:id].present? ? new_photo_album_path(parent_id: params[:id]) : new_photo_album_path
+      ul.nav.navbar-nav.pull-right.log-in-out
+        - if current_user.present?
           li
-            = link_to t('navigation.menu.logout'), logout_path, data: { confirm: t('common.confirms.are_you_sure') }
+            = link_to logout_path, title: t('navigation.menu.logout'), data: { confirm: t('common.confirms.are_you_sure') }
+              span class='glyphicon glyphicon-log-out'
         - else
           li class = (request.path == login_path ? 'active' : '')
-            = link_to t('navigation.menu.login'), login_path
+            = link_to login_path, title: t('navigation.menu.login')
+              span class='glyphicon glyphicon-log-in'
