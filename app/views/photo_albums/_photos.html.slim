@@ -4,7 +4,7 @@
       - if current_user.present?
         .flex-container
           - photo_album.photos.processed.ordered.each do |p|
-            .flex-item
+            .flex-item  id=("photo_item_#{p.id}")
               - if child
                 .photo-header-small
                   = p.image_file_name
@@ -16,8 +16,8 @@
                 .photo-show
                   = link_to image_tag(p.image.url(:showed), class: 'img-showed'), @photo_album_presenter.photo_url(p), data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
               .photo-action
-                = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger', method: :delete,
-                        data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }
+                = link_to t('photos.labels.delete'), photo_path(p), class: 'btn btn-danger btn-delete-photo', remote: true, method: :delete,
+                        data: { confirm: t('common.confirms.are_you_sure'), severity: 'danger', disable_with: t('photo_albums.labels.processing') }
       - else
         .row-fluid
           .span12
@@ -27,3 +27,8 @@
                 .owl-item.item
                   = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p),
                           data: { toggle: 'lightbox', gallery: photo_album.title, title: @photo_album_presenter.photo_title(p) }
+
+javascript:
+    $('.btn-delete-photo').bind('ajax:success', function (data, status, xhr) {
+        $('#photo_item_' + status['id']).hide();
+    });

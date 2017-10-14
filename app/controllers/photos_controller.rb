@@ -27,10 +27,8 @@ class PhotosController < ApplicationController
 
   def destroy
     photo = Photo.find(params[:id])
-    photo_album = photo.photo_album
     photo.destroy
-    flash[:success] = t('photos.notices.destroyed')
-    redirect_to "#{photo_albums_path}/#{photo_album.id}"
+    render head: :ok, json: params
   end
 
   private
