@@ -48,6 +48,7 @@ sk:
         edit: Editovať album
         processing: Spracovanie...
         not_processed: Nespracované
+        parent_album: Nadriadený album
 
   javascript:
     date_format: dd.mm.yyyy

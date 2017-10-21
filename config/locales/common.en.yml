@@ -48,6 +48,7 @@ en:
         edit: Edit photo album
         processing: Processing...
         not_processed: Not processed
+        parent_album: Parent album
 
   javascript:
     date_format: yyyy-mm-dd

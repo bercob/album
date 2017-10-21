@@ -2,13 +2,16 @@
   = pa.input :title
   label.control-label
     = t 'activerecord.attributes.photo_album.taken_at'
-  .input-group.date.taken_at
+  .input-group.taken-at
     = pa.input :taken_at, as: :string,
             input_html: { class: 'datepicker-input-box', readonly: false, value: @photo_album_presenter.datepicker_value(pa.object.taken_at) },
             label: false
     span.input-group-addon
       i.glyphicon.glyphicon-calendar
-  = pa.hidden_field :parent_id, value: params[:parent_id]
+  label.control-label
+    = t 'photo_albums.labels.parent_album'
+  .parent-tree#parent_tree
+  = pa.hidden_field :parent_id, value: @photo_album.parent_id
   br
   = pa.button :submit, t('photo_albums.labels.save'), class: 'btn btn-success', data: { disable_with: t('photo_albums.labels.processing')}
 
@@ -21,4 +24,17 @@ javascript:
     todayHighlight: true,
     endDate: current_date,
     format: "#{t 'javascript.date_format'}"
+  });
+
+  $('#parent_tree').jstree({
+      'core': {
+          'data': #{raw PhotoAlbum.tree(exclude: @photo_album, selected: @photo_album.parent).to_json}
+      }
+  });
+
+  $('#parent_tree').on("changed.jstree", function (e, data) {
+      if(data.selected[0] != 0)
+          $('#photo_album_parent_id').val(data.selected[0]);
+      else
+          $('#photo_album_parent_id').val(null);
   });

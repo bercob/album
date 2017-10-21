@@ -1,6 +1,6 @@
 - if current_user.present?
   .action-buttons
-    = link_to t('photo_albums.labels.edit'), edit_photo_album_path(photo_album), class: 'btn btn-success'
+    = link_to t('photo_albums.labels.edit'), edit_photo_album_path(photo_album, ), class: 'btn btn-success'
     =< link_to t('photos.labels.add_photos'), new_photo_path(photo_album_id: photo_album.id), class: 'btn btn-success'
     =< link_to t('photo_albums.labels.delete'), photo_album_path(photo_album), class: 'btn btn-danger', method: :delete,
             data: { confirm: t('common.confirms.are_you_sure'), disable_with: t('photo_albums.labels.processing') }

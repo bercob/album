@@ -44,6 +44,8 @@ gem 's3_direct_upload', git: 'https://github.com/RobotsAndPencils/s3_direct_uplo
 
 gem 'delayed_job_active_record'
 
+gem 'jstree-rails-4', '~> 3.3', '>= 3.3.4'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

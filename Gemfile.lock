@@ -129,6 +129,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    jstree-rails-4 (3.3.4)
     jwt (1.5.1)
     lightbox-bootstrap-rails (3.3.0.3)
     loofah (2.0.3)
@@ -291,6 +292,7 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
+  jstree-rails-4 (~> 3.3, >= 3.3.4)
   lightbox-bootstrap-rails
   minitest-reporters
   owlcarousel-rails

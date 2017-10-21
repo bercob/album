@@ -17,7 +17,7 @@ class PhotoAlbumsController < ApplicationController
   before_action :set_photo_album_presenter, except: [:destroy]
 
   def index
-    @photo_albums = PhotoAlbum.not_deleted.top_parents.ordered
+    @photo_albums = PhotoAlbum.top_parents.not_deleted.ordered
   end
 
   def new

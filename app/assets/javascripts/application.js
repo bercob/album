@@ -18,4 +18,5 @@
 //= require owl.carousel
 //= require bootstrap-datepicker
 //= require s3_direct_upload
+//= require jstree
 //= require_tree .
