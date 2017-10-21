@@ -49,6 +49,7 @@ sk:
         processing: Spracovanie...
         not_processed: Nespracované
         parent_album: Nadriadený album
+        search: Hľadať
 
   javascript:
     date_format: dd.mm.yyyy

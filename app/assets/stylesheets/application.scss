@@ -125,3 +125,13 @@ body {
   margin-bottom: 15px;
 }
 
+.form-control.search-tree-value {
+  display: inline-block;
+  width: auto;
+  margin: 0 10px 0 0;
+}
+
+.jstree-default .jstree-search {
+  color: #3c763d;
+  font-weight: normal;
+}

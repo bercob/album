@@ -10,6 +10,9 @@
       i.glyphicon.glyphicon-calendar
   label.control-label
     = t 'photo_albums.labels.parent_album'
+  br
+  = text_field_tag 'search_tree_value', nil, type: :search, id: :search_string, class: 'string form-control search-tree-value'
+  = button_tag t('photo_albums.labels.search'), type: :button, id: :btn_search, class: 'btn btn-info'
   .parent-tree#parent_tree
   = pa.hidden_field :parent_id, value: @photo_album.parent_id
   br
@@ -27,6 +30,7 @@ javascript:
   });
 
   $('#parent_tree').jstree({
+      'plugins' : ['search'],
       'core': {
           'data': #{raw PhotoAlbum.tree(exclude: @photo_album, selected: @photo_album.parent).to_json}
       }
@@ -37,4 +41,9 @@ javascript:
           $('#photo_album_parent_id').val(data.selected[0]);
       else
           $('#photo_album_parent_id').val(null);
+  });
+
+  $('#btn_search').click(function (e) {
+      e.preventDefault();
+      $('#parent_tree').jstree(true).search($('#search_string').val());
   });

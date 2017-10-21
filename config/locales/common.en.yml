@@ -49,6 +49,7 @@ en:
         processing: Processing...
         not_processed: Not processed
         parent_album: Parent album
+        search: Search
 
   javascript:
     date_format: yyyy-mm-dd
