@@ -21,7 +21,7 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def new
-    @photo_album = PhotoAlbum.new
+    @photo_album = PhotoAlbum.new parent_id: params[:parent_id]
   end
 
   def create
