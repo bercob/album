@@ -31,11 +31,16 @@ sk:
     notices:
       added: Fotky boli pridané.
       destroyed: Fotka bola odstránená.
+      uploaded: "%{file_name} s veľkosťou %{file_size} bol nahratý"
     labels:
       upload: Nahrať fotky
       upload_to_album: Nahrať fotky do "%{photo_album_title}"
       delete: Zmazať fotku
       add_photos: Pridať fotky
+    alerts:
+      failed_to_upload: sa nepodarilo nahrať
+      size_is: má veľkosť
+      max_file_size_is: maximálna veľkosť je
   photo_albums:
       notices:
         added: Album bol pridaný.

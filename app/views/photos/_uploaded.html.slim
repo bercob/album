@@ -1,2 +1,2 @@
 div
-  = "#{photo.image_file_name} with size #{number_to_human_size(photo.image_file_size)} has been uploaded"
+  = t 'photos.notices.uploaded', file_name:  photo.image_file_name, file_size: number_to_human_size(photo.image_file_size)

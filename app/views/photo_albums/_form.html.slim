@@ -2,7 +2,7 @@
   = pa.input :title
   label.control-label
     = t 'activerecord.attributes.photo_album.taken_at'
-  .input-group.taken-at
+  .input-group.date.taken-at
     = pa.input :taken_at, as: :string,
             input_html: { class: 'datepicker-input-box', readonly: false, value: @photo_album_presenter.datepicker_value(pa.object.taken_at) },
             label: false
@@ -21,7 +21,7 @@
 javascript:
   var current_date = new Date();
 
-  $('.taken_at').datepicker({
+  $('.taken-at').datepicker({
     autoclose: true,
     language: "#{I18n.locale}",
     todayHighlight: true,

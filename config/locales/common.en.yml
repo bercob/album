@@ -31,11 +31,16 @@ en:
     notices:
       added: The photo(s) was added.
       destroyed: The photo was destroyed.
+      uploaded: "%{file_name} with size %{file_size} has been uploaded"
     labels:
       upload: Upload photos
       upload_to_album: Upload photos to "%{photo_album_title}"
       delete: Delete photo
       add_photos: Add photos
+    alerts:
+      failed_to_upload: failed to upload
+      size_is: size is
+      max_file_size_is: maximum file size is
   photo_albums:
       notices:
         added: The photo album was added.
