@@ -15,12 +15,12 @@
  *= require bootstrap-datepicker3
  *= require s3_direct_upload_progress_bars
  *= require jstree-default
+ *= require swipebox
  *= require_tree .
  *= require_self
  */
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'lightbox-bootstrap';
 @import 'navigation';
 
 body {

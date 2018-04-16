@@ -34,7 +34,7 @@ gem 'paperclip', '~> 4.2'
 
 gem 'aws-sdk', '< 2.0'
 
-gem 'lightbox-bootstrap-rails'
+gem 'swipebox', '~> 1.4', '>= 1.4.4'
 
 gem 'owlcarousel-rails'
 

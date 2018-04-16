@@ -14,9 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require lightbox-bootstrap
 //= require owl.carousel
 //= require bootstrap-datepicker
 //= require s3_direct_upload
 //= require jstree
+//= require swipebox
 //= require_tree .
