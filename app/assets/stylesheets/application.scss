@@ -81,6 +81,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-end;
+  justify-content: center;
 }
 
 .flex-item {
@@ -93,6 +94,10 @@ body {
 }
 
 .photo-thumb {
+  margin-bottom: 5px;
+}
+
+.photo-header {
   margin-bottom: 5px;
 }
 
