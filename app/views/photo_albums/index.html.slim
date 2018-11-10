@@ -1,3 +1,4 @@
+- content_for :head_title, @photo_album.present? ? @photo_album.title : t('common.app_name')
 - if params[:id].present?
   .panel.panel-success
     .panel-heading
