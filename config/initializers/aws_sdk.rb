@@ -1,6 +1,7 @@
-AWS.config(
-    access_key_id:      ENV['AWS_KEY'],
-    secret_access_key:  ENV['AWS_SECRET'],
-    region:             ENV['AWS_REGION'],
-    bucket:             ENV['S3_BUCKET_NAME']
+Aws.config.update(
+  region: ENV['AWS_REGION'],
+  credentials: Aws::Credentials.new(
+    ENV['AWS_KEY'],
+    ENV['AWS_SECRET']
+  )
 )

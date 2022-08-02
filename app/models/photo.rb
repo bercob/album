@@ -14,7 +14,7 @@
 #  processed          :boolean          default(FALSE), not null
 #
 
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   BUCKET_NAME = ENV['S3_BUCKET_NAME']
   DIRECT_UPLOAD_URL_FORMAT = %r{\Ahttps:\/\/s3\.#{ENV['AWS_REGION']}.amazonaws\.com\/#{BUCKET_NAME}\/(?<path>uploads\/.+\/(?<filename>.+))\z}.freeze
 
@@ -59,13 +59,11 @@ class Photo < ActiveRecord::Base
     photo = Photo.find(id)
 
     direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(photo.direct_upload_url)
+    photo.set_upload_attributes
+    photo.update processed: true
 
-    photo.update image: URI.parse(URI.escape(photo.direct_upload_url)), processed: true
-
-    AWS::S3.new.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].delete
+    Aws::S3::Resource.new.bucket(BUCKET_NAME).object(direct_upload_url_data[:path]).delete
   end
-
-  protected
 
   # Optional: Set attachment attributes from the direct upload instead of original upload callback params
   # @note Retry logic handles occasional S3 "eventual consistency" lag.
@@ -73,13 +71,13 @@ class Photo < ActiveRecord::Base
     tries ||= 5
     direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(direct_upload_url)
 
-    direct_upload_head = AWS::S3.new.buckets[BUCKET_NAME].objects[direct_upload_url_data[:path]].head
+    direct_upload_head = Aws::S3::Resource.new.bucket(BUCKET_NAME).object(direct_upload_url_data[:path]).head
 
     self.image_file_name     = direct_upload_url_data[:filename]
     self.image_file_size     = direct_upload_head.content_length
     self.image_content_type  = direct_upload_head.content_type
     self.image_updated_at    = direct_upload_head.last_modified
-  rescue AWS::S3::Errors::NoSuchKey => e
+  rescue Aws::S3::Errors::NoSuchKey => e
     tries -= 1
     if tries > 0
       sleep(3)
