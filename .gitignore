@@ -18,6 +18,7 @@
 .idea/
 .byebug_history
 /public/thumbnails
+.DS_Store
 
 # ignore .env file
 .env

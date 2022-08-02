@@ -11,10 +11,10 @@
 #  deleted    :boolean          default(FALSE), not null
 #
 
-class PhotoAlbum < ActiveRecord::Base
+class PhotoAlbum < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :children, class_name: 'PhotoAlbum', foreign_key: :parent_id, dependent: :destroy
-  belongs_to :parent, class_name: 'PhotoAlbum'
+  belongs_to :parent, class_name: 'PhotoAlbum', optional: true
 
   validates :title, presence: true
 
