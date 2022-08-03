@@ -41,5 +41,6 @@ javascript:
         $('#s3-uploader').bind('s3_upload_failed', function (e, content) {
             $('#upload_' + content.unique_id).hide();
             $('#uploads_container').append('<div>' + content.filename + ' #{t("photos.alerts.failed_to_upload")}</div>');
+            console.log(e);
         });
     });
