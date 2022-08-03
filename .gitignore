@@ -22,3 +22,6 @@
 
 # ignore .env file
 .env
+
+# gem files
+/vendor/bundle

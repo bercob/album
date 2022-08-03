@@ -59,8 +59,7 @@ class Photo < ApplicationRecord
     photo = Photo.find(id)
 
     direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(photo.direct_upload_url)
-    photo.set_upload_attributes
-    photo.update processed: true
+    photo.update image: open(URI.parse(photo.direct_upload_url)), processed: true
 
     Aws::S3::Resource.new.bucket(BUCKET_NAME).object(direct_upload_url_data[:path]).delete
   end

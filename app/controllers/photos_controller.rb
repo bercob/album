@@ -22,7 +22,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = @photo_album.photos.create(photo_params)
+    @photo = @photo_album.photos.create!(photo_params)
   end
 
   def destroy

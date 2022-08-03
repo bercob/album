@@ -24,10 +24,9 @@
         - if child
           .row-fluid
             .span12
-              .owl-carousel.owl-theme
-                .owl-wrapper-outer.owl-wrapper
+              .owl-carousel
                 - photo_album.photos.processed.ordered.each do |p|
-                  .owl-item.item
+                  .item
                     = link_to image_tag(p.image.url(:thumb), class: 'img-thumbnail'), @photo_album_presenter.photo_url(p),
                             class: 'swipebox', rel: photo_album.title, title: @photo_album_presenter.photo_title(p)
         - else

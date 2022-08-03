@@ -40,7 +40,7 @@ gem 'owlcarousel-rails'
 
 gem 'bootstrap-datepicker-rails'
 
-gem 's3_direct_upload', git: 'https://github.com/RobotsAndPencils/s3_direct_upload.git'
+gem 's3_direct_upload'
 
 gem 'delayed_job_active_record'
 
