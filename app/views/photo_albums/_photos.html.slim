@@ -46,4 +46,11 @@ javascript:
 
     $(document).ready(function () {
         $('.swipebox').swipebox();
+
+        $(".owl-carousel").owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 3000, //Set AutoPlay to 3 seconds
+            autoplayHoverPause: true,
+            items: 12
+        });
     });

@@ -23,14 +23,3 @@
       = render @photo_albums
 - else
   = render @photo_albums
-
-javascript:
-    $(document).ready(function () {
-
-        $(".owl-carousel").owlCarousel({
-            autoPlay: true,
-            autoplayTimeout: 3000, //Set AutoPlay to 3 seconds
-            items: 12 // items above 1000px browser width
-        });
-
-    });
