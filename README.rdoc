@@ -4,4 +4,6 @@ Photo album project
 - to run delayed jobs locally:
     - update config/initializers/delayed_job.rb
     - heroku local
-
+- start production
+    - bundle exec rake assets:precompile
+    - rails server -e production
