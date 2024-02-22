@@ -59,9 +59,9 @@ class Photo < ApplicationRecord
     photo = Photo.find(id)
 
     direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(photo.direct_upload_url)
-    photo.update image: open(URI.parse(photo.direct_upload_url)), processed: true
+    photo.update image: open(URI.parse(CGI.escape(photo.direct_upload_url))), processed: true
 
-    Aws::S3::Resource.new.bucket(BUCKET_NAME).object(CGI.escape(direct_upload_url_data[:path])).delete
+    Aws::S3::Resource.new.bucket(BUCKET_NAME).object(direct_upload_url_data[:path]).delete
   end
 
   # Optional: Set attachment attributes from the direct upload instead of original upload callback params
