@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_10_13_075519) do
+ActiveRecord::Schema.define(version: 2024_02_22_193356) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2017_10_13_075519) do
     t.integer "photo_album_id"
     t.string "direct_upload_url"
     t.boolean "processed", default: false, null: false
+    t.string "escaped_direct_upload_url"
     t.index ["image_file_name"], name: "index_photos_on_image_file_name"
     t.index ["photo_album_id"], name: "index_photos_on_photo_album_id"
   end

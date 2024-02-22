@@ -43,6 +43,7 @@ class Photo < ApplicationRecord
   # Store an unescaped version of the escaped URL that Amazon returns from direct upload.
   def direct_upload_url=(escaped_url)
     write_attribute(:direct_upload_url, (CGI.unescape(escaped_url) rescue nil))
+    write_attribute(:escaped_direct_upload_url, escaped_url)
   end
   
   # Final upload processing step:
@@ -59,7 +60,7 @@ class Photo < ApplicationRecord
     photo = Photo.find(id)
 
     direct_upload_url_data = DIRECT_UPLOAD_URL_FORMAT.match(photo.direct_upload_url)
-    photo.update image: open(URI.parse(CGI.escape(photo.direct_upload_url)).to_s), processed: true
+    photo.update image: open(URI.parse(photo.escaped_direct_upload_url).to_s), processed: true, image_file_name: photo.image_file_name
 
     Aws::S3::Resource.new.bucket(BUCKET_NAME).object(direct_upload_url_data[:path]).delete
   end
